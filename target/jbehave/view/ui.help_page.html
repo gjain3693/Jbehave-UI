@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>ui.help_page</title>
+<style type="text/css" media="all">
+@import url( "./style/jbehave-core.css" );
+</style>
+</head>
+<body>
+<div class="story">
+<h1></h1>
+<div class="path">ui/help_page.story</div>
+<div class="scenario">
+<h2>Scenario: User will navigate to Help</h2>
+<div class="step successful">Given user logged into Ebay</div>
+<div class="step successful">When user click on Help &amp; Contact link</div>
+<div class="step successful">Then user will navigate to <span class="step parameter">Customer Service</span> page</div>
+</div>
+<div class="scenario">
+<h2>Scenario: Catagories available at Customer Service page</h2>
+<div class="step successful">Given user logged into Ebay</div>
+<div class="step successful">When user navigated to <span class="step parameter">Customer Service</span> page</div>
+<div class="step successful">Then user will find below catagory for help
+<span class="step parameter"><table>
+<thead>
+<tr>
+<th>Options</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Popular solutions</td></tr>
+<tr>
+<td>Browse by topic</td></tr>
+</tbody>
+</table>
+</span></div>
+</div>
+</div>
+
+</body>
+<!--  SyntaxHighlighter resources:  should be included at end of body -->
+<link rel="stylesheet" type="text/css" href="./style/sh-3.0.83/shCore.css"/>
+<link rel="stylesheet" type="text/css" href="./style/sh-3.0.83/shThemeRDark.css"/>
+<script language="javascript" src="./js/sh-3.0.83/shCore.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushBash.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushCss.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushDiff.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushGroovy.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushJava.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushJScript.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushPlain.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushPython.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushRuby.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushScala.js"></script>
+<script language="javascript" src="./js/sh-3.0.83/shBrushXml.js"></script>
+<script language="javascript" src="./js/shBrushBdd.js"></script>
+<script type="text/javascript">
+    SyntaxHighlighter.defaults['gutter'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;    
+    SyntaxHighlighter.all();
+</script>
+</html>

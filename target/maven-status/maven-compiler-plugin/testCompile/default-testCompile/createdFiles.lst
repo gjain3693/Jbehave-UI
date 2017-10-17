@@ -1,0 +1,10 @@
+ui\SignInPageSteps.class
+ui\LoginPage.class
+ui\DealPage.class
+ui\DealPageSteps.class
+ui\HelpPage.class
+ui\TestSequence.class
+ui\SignInPage.class
+ui\HelpPageSteps.class
+ui\LoginPageSteps.class
+utility\Screenshot.class

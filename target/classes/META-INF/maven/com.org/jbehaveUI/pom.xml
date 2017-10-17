@@ -1,0 +1,282 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.org</groupId>
+	<artifactId>jbehaveUI</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>jbehaveUI</name>
+	<description>uiJbehave</description>
+
+
+	<properties>
+		<runSuite>**/TestSequence.class</runSuite>
+	</properties>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.jbehave/jbehave-core -->
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>4.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+	
+	
+	<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-ie-driver</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+	
+	
+	
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.53.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-remote-driver</artifactId>
+			<version>2.53.0</version>
+		</dependency>
+
+		<dependency>
+			<artifactId>guava</artifactId>
+			<groupId>com.google.guava</groupId>
+			<type>jar</type>
+			<version>15.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>jbehave</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jbehave</groupId>
+						<artifactId>jbehave-maven-plugin</artifactId>
+						<version>3.1.2</version>
+						<executions>
+							<execution>
+								<id>run-stories-as-embeddables</id>
+								<phase>integration-test</phase>
+								<configuration>
+									<includes>
+										<include>**/SmokeSuite.java</include>
+									</includes>
+									<ignoreFailureInStories>true</ignoreFailureInStories>
+									<ignoreFailureInView>false</ignoreFailureInView>
+								</configuration>
+								<goals>
+									<goal>run-stories-as-embeddables</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>unpack-jbehave-site-resources</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<overWriteReleases>false</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.jbehave.site</groupId>
+											<artifactId>jbehave-site-resources</artifactId>
+											<version>3.2</version>
+											<type>zip</type>
+											<outputDirectory>
+												${project.build.directory}/jbehave/view
+											</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+							<execution>
+								<id>unpack-jbehave-reports-resources</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<overWriteReleases>false</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.jbehave</groupId>
+											<artifactId>jbehave-core</artifactId>
+											<version>4.0.4</version>
+											<outputDirectory>
+												${project.build.directory}/jbehave/view
+											</outputDirectory>
+											<includes>**\/*.css,**\/*.ftl,**\/*.js</includes>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-maven-plugin</artifactId>
+				<version>3.1.2</version>
+				<executions>
+					<execution>
+						<id>run-stories-as-embeddables</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<includes>
+								<include>**/TestSequence.java</include>
+							</includes>
+							<ignoreFailureInStories>true</ignoreFailureInStories>
+							<ignoreFailureInView>false</ignoreFailureInView>
+						</configuration>
+						<goals>
+							<goal>run-stories-as-embeddables</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack-jbehave-site-resources</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.jbehave.site</groupId>
+									<artifactId>jbehave-site-resources</artifactId>
+									<version>3.2</version>
+									<type>zip</type>
+									<outputDirectory>
+										${project.build.directory}/jbehave/view
+									</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+					<execution>
+						<id>unpack-jbehave-reports-resources</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.jbehave</groupId>
+									<artifactId>jbehave-core</artifactId>
+									<version>4.0.4</version>
+									<outputDirectory>
+										${project.build.directory}/jbehave/view
+									</outputDirectory>
+									<includes>**\/*.css,**\/*.ftl,**\/*.js</includes>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>${runSuite}</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+			<!-- <plugin>
+				<groupId>com.github.webdriverextensions</groupId>
+				<artifactId>webdriverextensions-maven-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<drivers>
+						<driver>
+							<name>edgedriver</name>
+							<platform>windows</platform>
+							<bit>64</bit>
+							<version>3.14366</version>
+						</driver>
+						<driver>
+							<name>internetexplorerdriver</name>
+							<platform>windows</platform>
+							<bit>64</bit>
+							<version>3.0.0</version>
+						</driver>
+					</drivers>
+					<installationDirectory>${project.basedir}/drivers</installationDirectory>
+					<keepDownloadedWebdrivers>true</keepDownloadedWebdrivers>
+				</configuration>
+				<executions>
+					<execution>
+						<id>webdriver download</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>install-drivers</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
+			
+			
+		</plugins>
+	</build>
+</project>

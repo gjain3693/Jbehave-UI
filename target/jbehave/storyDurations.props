@@ -1,0 +1,6 @@
+#org.jbehave.core.embedder.StoryManager
+#Mon Oct 16 21:13:45 IST 2017
+ui/contact_us_page.story=10000
+threads=1
+total=10000
+threadAverage=10000
